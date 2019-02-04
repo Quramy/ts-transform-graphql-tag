@@ -4,6 +4,7 @@ import gql from "graphql-tag"
 import astify, { InterpolationNode } from "./astify"
 import { visit, DocumentNode, IntValueNode, FloatValueNode, StringValueNode } from "graphql"
 import { printWithReducedWhitespace, sortAST } from "apollo-engine-reporting"
+import { withTypenameFieldAddedWhereNeeded } from "./util"
 
 const GRAPHQL_TAG_MODULE_REGEX = /^['"]graphql-tag['"]$/
 
@@ -114,7 +115,9 @@ function getQueryDocument(source: string) {
     }
   }
 
-  const printAst = printWithReducedWhitespace(sortAST(hideCertainLiterals(queryDocument)))
+  const printAst = printWithReducedWhitespace(
+    sortAST(hideCertainLiterals(withTypenameFieldAddedWhereNeeded(queryDocument))),
+  )
   const signature = manifestOperationHash(printAst)
 
   queryDocument["__signature__"] = signature
