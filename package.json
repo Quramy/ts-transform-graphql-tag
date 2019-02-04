@@ -1,6 +1,6 @@
 {
-  "name": "ts-transform-graphql-tag",
-  "version": "0.2.1",
+  "name": "@quramy/ts-transform-graphql-tag",
+  "version": "0.3.1",
   "description": "Compiles GraphQL tagged template strings using graphql-tag in TypeScript files.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/firede/ts-transform-graphql-tag.git"
+    "url": "git+https://github.com/quramy/ts-transform-graphql-tag.git"
   },
   "keywords": [
     "typescript",
@@ -24,17 +24,18 @@
     "graphql"
   ],
   "author": {
-    "name": "Firede",
-    "email": "firede@firede.us"
+    "name": "quramy",
+    "email": "yosuke.kurami@gmail.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/firede/ts-transform-graphql-tag/issues"
+    "url": "https://github.com/quramy/ts-transform-graphql-tag/issues"
   },
-  "homepage": "https://github.com/firede/ts-transform-graphql-tag#readme",
+  "homepage": "https://github.com/quramy/ts-transform-graphql-tag#readme",
   "devDependencies": {
     "@types/debug": "0.0.31",
     "@types/glob": "^7.1.0",
+    "@types/graphql": "^14.0.5",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.3",
     "debug": "^4.1.0",
@@ -79,5 +80,8 @@
       "pre-commit": "lint-staged",
       "pre-push": "npm test"
     }
+  },
+  "dependencies": {
+    "apollo-engine-reporting": "^0.2.2"
   }
 }

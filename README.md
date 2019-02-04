@@ -1,9 +1,12 @@
 # ts-transform-graphql-tag
 
+<!--
 [![npm](https://img.shields.io/npm/v/ts-transform-graphql-tag.svg)](https://www.npmjs.com/package/ts-transform-graphql-tag)
 [![Travis](https://img.shields.io/travis/firede/ts-transform-graphql-tag.svg)](https://travis-ci.org/firede/ts-transform-graphql-tag)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffirede%2Fts-transform-graphql-tag.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffirede%2Fts-transform-graphql-tag?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffirede%2Fts-transform-graphql-tag.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffirede%2Fts-transform-graphql-tag?ref=badge_shield) -->
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
+---
 
 Compiles GraphQL tagged template strings using [graphql-tag](https://github.com/apollographql/graphql-tag) in TypeScript files.
 
@@ -28,7 +31,7 @@ Removing the `graphql-tag` dependecy from the bundle saves approx. 50 KB.
 The following command adds the packages to the project as a development-time dependency:
 
 ```sh
-npm i --save-dev ts-transform-graphql-tag
+npm i --save-dev @quramy/ts-transform-graphql-tag
 ```
 
 This also depends on `graphql` and `graphql-tag` so you'll need those in your project as well (if you don't already have them):
@@ -59,7 +62,7 @@ In the `webpack.config.js` file in the section where **awesome-typescript-loader
 
 ```js
 // 1. import `getTransformer` from the module
-var getTransformer = require('ts-transform-graphql-tag').getTransformer
+var getTransformer = require('@quramy/ts-transform-graphql-tag').getTransformer
 
 // 2. create a transformer and add getCustomTransformer method to the loader config
 var config = {
@@ -86,7 +89,7 @@ In the `webpack.config.js` file in the section where **ts-loader** is configured
 
 ```js
 // 1. import `getTransformer` from the module
-var getTransformer = require('ts-transform-graphql-tag').getTransformer
+var getTransformer = require('@quramy/ts-transform-graphql-tag').getTransformer
 
 // 2. create a transformer and add getCustomTransformer method to the loader config
 var config = {
@@ -115,7 +118,7 @@ In the `fuse.ts` file, you can configured like this:
 
 ```ts
 // 1. import `getTransformer` from the module
-import { getTransformer } from "ts-transform-graphql-tag"
+import { getTransformer } from "@quramy/ts-transform-graphql-tag"
 
 // 2. create a transformer and add it to the `transformers.before` config
 const fuse = FuseBox.init({
@@ -143,7 +146,7 @@ export default gql`query Hello {hello}`
 ```js
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = { "kind": "Document", "definitions": [{ "kind": "OperationDefinition", "operation": "query", "name": { "kind": "Name", "value": "Hello" }, "variableDefinitions": [], "directives": [], "selectionSet": { "kind": "SelectionSet", "selections": [{ "kind": "Field", "alias": undefined, "name": { "kind": "Name", "value": "hello" }, "arguments": [], "directives": [], "selectionSet": undefined }] } }], "loc": { "start": 0, "end": 19, "source": { "body": "query Hello {hello}", "name": "GraphQL request", "locationOffset": { "line": 1, "column": 1 } } } };
+exports.default = { "__signature__": "04559d249676e347b115eda728635d5856f6560300659ae81adbcd2242b41d09", "kind": "Document", "definitions": [{ "kind": "OperationDefinition", "operation": "query", "name": { "kind": "Name", "value": "Hello" }, "variableDefinitions": [], "directives": [], "selectionSet": { "kind": "SelectionSet", "selections": [{ "kind": "Field", "alias": undefined, "name": { "kind": "Name", "value": "hello" }, "arguments": [], "directives": [], "selectionSet": undefined }] } }], "loc": { "start": 0, "end": 19, "source": { "body": "query Hello {hello}", "name": "GraphQL request", "locationOffset": { "line": 1, "column": 1 } } } };
 ```
 
 Need more example? run `npm test` and checkout `test/fixture/actual/*.js`.
@@ -157,7 +160,4 @@ Need more example? run `npm test` and checkout `test/fixture/actual/*.js`.
 * [babel-plugin-graphql-tag](https://github.com/gajus/babel-plugin-graphql-tag)
 * [ts-transform-img](https://github.com/longlho/ts-transform-img/)
 * [typescript-plugin-styled-components](https://github.com/Igorbek/typescript-plugin-styled-components)
-
----
-
-<p align="center">MIT &copy; <a href="https://github.com/firede">Firede</a>, built with :coffee: &amp; :sparkling_heart:<p>
+* [firede's original repo](https://github.com/firede/ts-transform-graphql-tag)

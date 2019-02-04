@@ -38,6 +38,7 @@ describe("converts inline `gql` tag with fragment interpolation", () => {
   // `loc` is defferent between runtime and compile time, so we don't compare them.
   delete expectValue.loc
   delete actualValue.loc
+  delete actualValue["__signature__"]
 
   it("result matched", () => expect(actualValue).toEqual(expectValue))
 })

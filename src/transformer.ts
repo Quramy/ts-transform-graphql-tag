@@ -1,6 +1,9 @@
 import * as ts from "typescript"
+import { createHash } from "crypto"
 import gql from "graphql-tag"
 import astify, { InterpolationNode } from "./astify"
+import { visit, DocumentNode, IntValueNode, FloatValueNode, StringValueNode } from "graphql"
+import { printWithReducedWhitespace, sortAST } from "apollo-engine-reporting"
 
 const GRAPHQL_TAG_MODULE_REGEX = /^['"]graphql-tag['"]$/
 
@@ -76,6 +79,27 @@ function getVisitor(context: ts.TransformationContext, sourceFile: ts.SourceFile
   return visitor
 }
 
+// this function was copied from https://github.com/apollographql/apollo-tooling/blob/master/packages/apollo/src/commands/client/extract.ts#L14:31
+function manifestOperationHash(str: string): string {
+  return createHash("sha256")
+    .update(str)
+    .digest("hex")
+}
+
+function hideCertainLiterals(ast: DocumentNode): DocumentNode {
+  return visit(ast, {
+    IntValue(node: IntValueNode): IntValueNode {
+      return { ...node, value: "0" }
+    },
+    FloatValue(node: FloatValueNode): FloatValueNode {
+      return { ...node, value: "0" }
+    },
+    StringValue(node: StringValueNode): StringValueNode {
+      return { ...node, value: "", block: false }
+    },
+  })
+}
+
 function getQueryDocument(source: string) {
   const queryDocument = gql(source)
 
@@ -89,6 +113,11 @@ function getQueryDocument(source: string) {
       }
     }
   }
+
+  const printAst = printWithReducedWhitespace(sortAST(hideCertainLiterals(queryDocument)))
+  const signature = manifestOperationHash(printAst)
+
+  queryDocument["__signature__"] = signature
 
   return queryDocument
 }
