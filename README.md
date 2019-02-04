@@ -6,6 +6,8 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffirede%2Fts-transform-graphql-tag.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffirede%2Fts-transform-graphql-tag?ref=badge_shield) -->
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
+This repo is forked to attach sha256 hash of the transforming GraphQL Query to the output AST.
+
 ---
 
 Compiles GraphQL tagged template strings using [graphql-tag](https://github.com/apollographql/graphql-tag) in TypeScript files.
